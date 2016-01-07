@@ -35,7 +35,7 @@
         <h6>ABOUT ME</h6>
         <div class="foo"></div>
         <p>
-          I am orginially from the USA and now live in Wellington, New Zealand. I have worked in the software development industry for the past two and a half years - two years as a developer, and 6 months as a delivery team lead at Powershop. I love building things, hanging out with my family and friends, and sports.
+          I am orginially from the USA and now live in Wellington, New Zealand. I started my software development career two and a half years ago when I begin working at Powershop as a software developer. Six months ago I became a delivery team lead at Powershop. Prior to that I spent time working in the government, building, financial and legal sectors. I love building things, hanging out with my family and friends, and sports.
         </p>
       </div>
 
@@ -364,27 +364,27 @@
         <p>References available upon request.</p>
       </div>
     </section>
-
-    <script>
-      var data = {
-        roles: [
-          {
-            name: 'Delivery Team Lead',
-            employer: 'Powershop New Zealand Limited'
-          }
-        ]
-      };
-
-      (function () {
-        var employer_sections = document.querySelectorAll('.employer');
-
-        for (var i = 0; i < employer_sections.length; i++) {
-          employer_sections[i].addEventListener('click', function () {
-            this.querySelector('ul').classList.toggle('hidden');
-          });
-        }
-      })();
-    </script>
   </div>
+
+  <script>
+    var data = {
+      roles: [
+        {
+          name: 'Delivery Team Lead',
+          employer: 'Powershop New Zealand Limited'
+        }
+      ]
+    };
+
+    (function () {
+      var employer_sections = document.querySelectorAll('.employer');
+
+      for (var i = 0; i < employer_sections.length; i++) {
+        employer_sections[i].addEventListener('click', function () {
+          this.querySelector('ul').classList.toggle('hidden');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
