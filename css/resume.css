@@ -1,11 +1,36 @@
+html {
+  font-size: 62.5%;
+}
 body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 300;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
   font-weight: 300;
 }
-h6 {
+h2 {
   font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+header {
+  position: relative;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 ul {
-  margin-left: 1.1em;
   list-style: outside;
 }
 a {
@@ -41,6 +66,9 @@ a {
 .right .caret {
   display: inline-block;
 }
+.right {
+  float: right;
+}
 /*.caret:after {
   font-size: 65%;
     content: '▶';
@@ -51,11 +79,14 @@ a {
   margin-bottom: 10px;
 }
 .name {
-  display: inline;
+  position: absolute;
+  float: left;
+  bottom: 0;
+  margin-bottom: 0;
 }
 .contact {
   font-size: 90%;
-  float: right;
+  text-align: right;
   margin-left: 0;
   margin-bottom: 5px;
   list-style: none;
@@ -72,14 +103,33 @@ a {
   list-style-type: none;
   padding-right: 20px;
 }
-section:not(:last-child) {
+section:not(:last-child), header {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 2.5rem;
 }
-@media (min-width: 550px) {
+.employer, .school {
+  margin-top: 2rem;
+}
+.employer p, .school {
+  position: relative;
+}
+.employer p *, .school * {
+  display: block;
+}
+@media (min-width: 550px), print {
   .container {
     margin-top: 60px;
     margin-bottom: 60px;
+  }
+  .employer p *:nth-child(even), .school *:nth-child(even) {
+    position: absolute;
+    right: 0;
+  }
+  .employer p *:nth-child(2), .school *:nth-child(2) {
+    top: 0;
+  }
+  .employer p *:nth-child(4), .school *:nth-child(4) {
+    bottom: 0;
   }
   .right {
     text-align: right;
@@ -107,6 +157,7 @@ section:not(:last-child) {
   }
   .container {
     width: 100%;
+    padding: 0;
     margin: 0;
   }
   @page {
