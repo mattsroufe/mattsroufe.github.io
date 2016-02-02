@@ -36,8 +36,6 @@
     <br><br>
     <label for="years">Years</label>
     <input id="years" type="number" value="30">
-    <br><br>
-    <input id="submit" type="submit" value="Calculate">
   </form>
 
   <script>
@@ -46,7 +44,6 @@
         interest  = form.elements.namedItem("interest"),
         frequency = form.elements.namedItem("frequency"),
         years     = form.elements.namedItem("years"),
-        submit    = form.elements.namedItem("submit"),
         result    = document.getElementById("result");
 
     var updatePaymentAmount = function () {
