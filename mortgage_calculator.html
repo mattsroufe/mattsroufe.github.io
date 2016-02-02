@@ -7,31 +7,38 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <style type="text/css">
+    input {
+      width: 100%;
+      height: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <h1>Mortgage Repayment Calculator</h1>
-
+  <h2 id="result"></h2>
   <form>
     <label for="amount">Amount</label>
     <input id="amount" type="number" value="500000" required>
-
+    <br><br>
     <label for="interest">Interest</label>
     <input id="interest" type="number" value="5.25">
-
+    <br><br>
     <label for="frequency">Frequency</label>
     <select id="frequency">
       <option value="52">Weekly</option>
       <option value="26" selected>Fortnightly</option>
       <option value="12">Monthly</option>
     </select>
-
+    <br><br>
     <label for="years">Years</label>
     <input id="years" type="number" value="30">
-
+    <br><br>
     <input id="submit" type="submit" value="Calculate">
   </form>
-
-  <h2 id="result"></h2>
 
   <script>
     var form      = document.forms[0],
