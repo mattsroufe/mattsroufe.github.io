@@ -57,31 +57,39 @@
         <p>
           <strong>Delivery Team Lead</strong>
           <span>July 2015 - Present</span>
-          <em>Powershop New Zealand Limited</em>
+          <em class="employer-name">Powershop New Zealand Limited</em>
           <em>Wellington, New Zealand</em>
         </p>
-        <ul class="hidden"></ul>
+        <ul>
+          <li>
+            Performed defined contribution plan review with particular emphasis on vesting provisions.
+          </li>
+          <li>
+            Analysed plan documents to extract pertinent information used in a computer database to
+            track individual plan participants’ vested benefits.
+          </li>
+        </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Software Developer</strong>
           <span>June 2013 - July 2015</span>
-          <em>Powershop New Zealand Limited</em>
+          <em class="employer-name">Powershop New Zealand Limited</em>
           <em>Wellington, New Zealand</em>
         </p>
-        <ul class="hidden"></ul>
+        <ul></ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Analyst – Monitoring, Compliance &amp; Review</strong>
           <span>March 2011 - May 2013</span>
-          <em>Ministry for the Environment</em>
+          <em class="employer-name">Ministry for the Environment</em>
           <em>Wellington, New Zealand</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>
             Served as Project Manager for Emissions Trading Scheme Allocations Pilot Audit Project,
             successfully leading design, procurement and contract management activities while meeting
@@ -103,15 +111,15 @@
         </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Analyst – Monitoring &amp; Compliance</strong>
           <span>Jan 2010 – Mar 2011</span>
-          <em>Charities Commission</em>
+          <em class="employer-name">Charities Commission</em>
           <em>Wellington, New Zealand</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>
             Monitored and evaluated registered charities’ financial and operational activities to
             ensure on-going compliance with the requirements of the Charities Act 2005 and prepared
@@ -136,15 +144,15 @@
         </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Residential Energy Analyst</strong>
           <span>Apr 2008 – Oct 2009</span>
-          <em>Home Energy Diagnostics, LLC</em>
+          <em class="employer-name">Home Energy Diagnostics, LLC</em>
           <em>Cincinnati, Ohio, USA</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>
             Analysed new and existing homes using computer energy analysis software to determine
             cost-effective energy efficiency improvements.
@@ -168,15 +176,15 @@
         </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Contract Lawyer</strong>
           <span>Sep 2007 – Apr 2008</span>
-          <em>Reisenfeld &amp; Associates LPA, LLC</em>
+          <em class="employer-name">Reisenfeld &amp; Associates LPA, LLC</em>
           <em>Cincinnati, Ohio, USA</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>Served as local counsel to several national banks in residential foreclosure actions.</li>
           <li>Counselled clients on estate planning matters including wills, trusts, and estate tax planning.</li>
           <li>Successfully negotiated settlements between parties involved in domestic relations proceedings.</li>
@@ -184,15 +192,15 @@
         </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Associate Lawyer</strong>
           <span>Sep 2006 – Sep 2007</span>
-          <em>Kircher Law Office LLC</em>
+          <em class="employer-name">Kircher Law Office LLC</em>
           <em>Mason, Ohio, USA</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>
             Assisted in representing several individuals and companies in Internal Revenue Service tax
             dispute actions including trust fund recovery, failure-to-file, and tax evasion.
@@ -208,15 +216,15 @@
         </ul>
       </div>
 
-      <div class="employer">
+      <div class="employer collapsed">
         <p>
           <strong>Contract Auditor</strong>
           <span>Jan 2006 – July 2006</span>
-          <em>Fidelity Investments</em>
+          <em class="employer-name">Fidelity Investments</em>
           <em>Covington, Kentucky, USA</em>
         </p>
 
-        <ul class="hidden">
+        <ul>
           <li>
             Performed defined contribution plan review with particular emphasis on vesting provisions.
           </li>
@@ -258,7 +266,7 @@
 
       for (var i = 0; i < employer_sections.length; i++) {
         employer_sections[i].addEventListener('click', function () {
-          this.querySelector('ul').classList.toggle('hidden');
+          this.classList.toggle('collapsed');
         });
       }
     })();
