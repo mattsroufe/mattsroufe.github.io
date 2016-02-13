@@ -110,15 +110,6 @@ section:not(:last-child), header {
   .employer p *:nth-child(4), .school *:nth-child(4) {
     bottom: 0;
   }
-  .right {
-    text-align: right;
-  }
-  .caret {
-    display: inline-block;
-  }
-  .right .caret {
-    display: none;
-  }
 }
 @media (min-width: 960px) {
   body {
