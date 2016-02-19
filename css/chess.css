@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+}
+table {
+ text-align: center;
+ border-collapse: collapse;
+}
+span {
+  font-size: 250%;
+}
+td {
+  height: 54px;
+  width: 54px;
+  border: 1px solid #4CAF50;
+}
+tr:nth-child(odd) > td:nth-child(odd) {
+  background: #4CAF50;
+}
+tr:nth-child(even) > td:nth-child(even) {
+  background: #4CAF50;
+}
+tr > td:first-child, tr:last-child > td  {
+  background: none !important;
+  border: none !important;
+}
+img {
+  height: 45px;
+  width: 45px;
+}
+form {
+  display: none;
+}
