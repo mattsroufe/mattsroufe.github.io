@@ -21,14 +21,14 @@
         </tr>
         <tr>
           <td>7</td>
-          <td id="a7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="b7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="c7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="d7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="e7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="f7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="g7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
-          <td id="h7" class="droppable"><image draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="a7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="b7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="c7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="d7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="e7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="f7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="g7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
+          <td id="h7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="images/Chess_pdt45.svg.png"></td>
         </tr>
         <tr>
           <td>6</td>
@@ -76,14 +76,14 @@
         </tr>
         <tr>
           <td>2</td>
-          <td id="a2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="b2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="c2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="d2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="e2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="f2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="g2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
-          <td id="h2" class="droppable"><image draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="a2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="b2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="c2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="d2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="e2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="f2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="g2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
+          <td id="h2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="images/Chess_plt45.svg.png"></td>
         </tr>
         <tr>
           <td>1</td>
@@ -110,49 +110,6 @@
       </tbody>
     </table>
 
-    <script>
-      var draggables = document.querySelectorAll('[draggable]');
-      var droppables = document.querySelectorAll('.droppable');
-
-      function dragstart(e) {
-        e.dataTransfer.setData("text/plain", e.target.parentNode.id);
-      };
-
-      function dragover(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-      };
-
-      function drop(e) {
-        e.preventDefault();
-        var last_position = e.dataTransfer.getData("text");
-        var new_position  = (e.target.id.length > 0) ? e.target.id : e.target.parentNode.id;
-
-        if (last_position !== new_position) {
-          var piece = document.getElementById(last_position).childNodes[0];
-          var targetPosition = document.getElementById(new_position);
-
-          if (targetPosition.childElementCount > 0) {
-            targetPosition.removeChild(targetPosition.childNodes[0])
-          }
-
-          targetPosition.appendChild(piece);
-        }
-      };
-
-      for (var i = 0; i < draggables.length; i++) {
-        var draggable = draggables[i];
-        draggable.addEventListener('dragstart', dragstart, false);
-        draggable.addEventListener('click', function (e) {
-          console.log(e.target);
-        }, false);
-      }
-
-      for (var i = 0; i < droppables.length; i++) {
-        var droppable = droppables[i];
-        droppable.addEventListener('dragover', dragover, false);
-        droppable.addEventListener('drop', drop, false);
-      }
-    </script>
+    <script src="js/chess.js"></script>
   </body>
 </html>

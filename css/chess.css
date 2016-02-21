@@ -11,7 +11,7 @@ span {
 td {
   height: 54px;
   width: 54px;
-  border: 1px solid #4CAF50;
+  border: 1px solid black;
 }
 tr:nth-child(odd) > td:nth-child(odd) {
   background: #4CAF50;
@@ -24,9 +24,13 @@ tr > td:first-child, tr:last-child > td  {
   border: none !important;
 }
 img {
+  vertical-align: middle;
   height: 45px;
   width: 45px;
 }
 form {
   display: none;
+}
+.selected, .highlighted {
+  background: #FFEB3B !important;
 }
