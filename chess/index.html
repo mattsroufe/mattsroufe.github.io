@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubyChess</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/chess.css">
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>8</td>
+          <td id="a8" class="droppable"><image draggable="true" src="img/Chess_rdt45.svg.png"></td>
+          <td id="b8" class="droppable"><image draggable="true" src="img/Chess_ndt45.svg.png"></td>
+          <td id="c8" class="droppable"><image draggable="true" src="img/Chess_bdt45.svg.png"></td>
+          <td id="d8" class="droppable"><image draggable="true" src="img/Chess_qdt45.svg.png"></td>
+          <td id="e8" class="droppable"><image draggable="true" src="img/Chess_kdt45.svg.png"></td>
+          <td id="f8" class="droppable"><image draggable="true" src="img/Chess_bdt45.svg.png"></td>
+          <td id="g8" class="droppable"><image draggable="true" src="img/Chess_ndt45.svg.png"></td>
+          <td id="h8" class="droppable"><image draggable="true" src="img/Chess_rdt45.svg.png"></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td id="a7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="b7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="c7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="d7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="e7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="f7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="g7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+          <td id="h7" class="droppable"><image class="pawn" data-color="black" draggable="true" src="img/Chess_pdt45.svg.png"></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td id="a6" class="droppable"></td>
+          <td id="b6" class="droppable"></td>
+          <td id="c6" class="droppable"></td>
+          <td id="d6" class="droppable"></td>
+          <td id="e6" class="droppable"></td>
+          <td id="f6" class="droppable"></td>
+          <td id="g6" class="droppable"></td>
+          <td id="h6" class="droppable"></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td id="a5" class="droppable"></td>
+          <td id="b5" class="droppable"></td>
+          <td id="c5" class="droppable"></td>
+          <td id="d5" class="droppable"></td>
+          <td id="e5" class="droppable"></td>
+          <td id="f5" class="droppable"></td>
+          <td id="g5" class="droppable"></td>
+          <td id="h5" class="droppable"></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td id="a4" class="droppable"></td>
+          <td id="b4" class="droppable"></td>
+          <td id="c4" class="droppable"></td>
+          <td id="d4" class="droppable"></td>
+          <td id="e4" class="droppable"></td>
+          <td id="f4" class="droppable"></td>
+          <td id="g4" class="droppable"></td>
+          <td id="h4" class="droppable"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td id="a3" class="droppable"></td>
+          <td id="b3" class="droppable"></td>
+          <td id="c3" class="droppable"></td>
+          <td id="d3" class="droppable"></td>
+          <td id="e3" class="droppable"></td>
+          <td id="f3" class="droppable"></td>
+          <td id="g3" class="droppable"></td>
+          <td id="h3" class="droppable"></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td id="a2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="b2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="c2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="d2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="e2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="f2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="g2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+          <td id="h2" class="droppable"><image class="pawn" data-color="white" draggable="true" src="img/Chess_plt45.svg.png"></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td id="a1" class="droppable"><image draggable="true" src="img/Chess_rlt45.svg.png"></td>
+          <td id="b1" class="droppable"><image draggable="true" src="img/Chess_nlt45.svg.png"></td>
+          <td id="c1" class="droppable"><image draggable="true" src="img/Chess_blt45.svg.png"></td>
+          <td id="d1" class="droppable"><image draggable="true" src="img/Chess_qlt45.svg.png"></td>
+          <td id="e1" class="droppable"><image draggable="true" src="img/Chess_klt45.svg.png"></td>
+          <td id="f1" class="droppable"><image draggable="true" src="img/Chess_blt45.svg.png"></td>
+          <td id="g1" class="droppable"><image draggable="true" src="img/Chess_nlt45.svg.png"></td>
+          <td id="h1" class="droppable"><image draggable="true" src="img/Chess_rlt45.svg.png"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+          <td>d</td>
+          <td>e</td>
+          <td>f</td>
+          <td>g</td>
+          <td>h</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="js/square.js"></script>
+    <script src="js/chess.js"></script>
+  </body>
+</html>

@@ -10,24 +10,6 @@ game = {
   moves: []
 };
 
-Square = {
-  piece: function () {
-    return this.childNodes[0];
-  },
-  rank: function () {
-    return parseInt(this.id.charAt(1));
-  },
-  file: function () {
-    return this.id.charAt(0);
-  },
-  isEmpty: function () {
-    return !this.piece();
-  },
-  contains: function (color) {
-    return this.querySelector('[data-color="' + color + '"]') !== null;
-  }
-};
-
 Piece = {
   color: function () {
     return this.dataset.color;
@@ -95,14 +77,14 @@ function drop(e) {
 
 function move(last_position, new_position) {
   if (last_position !== new_position) {
-    var piece = document.getElementById(last_position).childNodes[0];
+    var piece = document.getElementById(last_position).firstChild;
     var targetPosition = document.getElementById(new_position);
 
-    if (targetPosition.childElementCount > 0) {
-      targetPosition.removeChild(targetPosition.childNodes[0])
+    if ( !targetPosition.isEmpty() ) {
+      targetPosition.replaceChild(piece, targetPosition.piece())
+    } else {
+      targetPosition.appendChild(piece);
     }
-
-    targetPosition.appendChild(piece);
   }
   deSelect(selected());
   forEach(document.querySelectorAll('.highlighted'), function (index, square) {
@@ -110,9 +92,12 @@ function move(last_position, new_position) {
   });
 };
 
-function select(square) {
-  square.classList.add('selected');
-  highlightPossilbeMoves(square);
+function mousedown () {
+  if (selected() === null && !this.isEmpty()) {
+    this.select();
+  } else if (selected() !== null) {
+    move(selected().id, this.id);
+  }
 }
 
 function selected() {
@@ -145,13 +130,7 @@ forEach(droppables, function (index, droppable) {
   Object.assign(droppable, Square);
   droppable.addEventListener('dragover', dragover, false);
   droppable.addEventListener('drop', drop, false);
-  droppable.addEventListener('mousedown', function () {
-    if (selected() === null && !this.isEmpty()) {
-      select(this);
-    } else if (selected() !== null) {
-      move(selected().id, this.id);
-    }
-  }, false);
+  droppable.addEventListener('mousedown', mousedown, false);
 });
 
 forEach(document.querySelectorAll('.pawn'), function (index, pawn) {
