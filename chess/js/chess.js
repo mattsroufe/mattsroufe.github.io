@@ -1,14 +1,6 @@
-var draggables = document.querySelectorAll('[draggable]');
-var droppables = document.querySelectorAll('.droppable');
-
 var FILES = 'abcdefgh'.split('')
-
 var BLACK = 'black';
 var WHITE = 'white';
-
-game = {
-  moves: []
-};
 
 Piece = {
   color: function () {
@@ -18,10 +10,10 @@ Piece = {
     return this.parentNode;
   },
   rank: function () {
-    return this.currentSquare().rank();
+    return this.currentSquare().rank;
   },
   file: function () {
-    return this.currentSquare().file();
+    return this.currentSquare().file;
   }
 };
 
@@ -86,24 +78,19 @@ function move(last_position, new_position) {
       targetPosition.appendChild(piece);
     }
   }
-  selected().deSelect();
+  selectedSquare.deSelect();
   forEach(document.querySelectorAll('.highlighted'), function (index, square) {
     square.classList.remove('highlighted');
   });
 };
 
 function mousedown(e) {
-  if ( selected() ) {
-    var target_id = e.target.id || e.target.parentElement.id;
-    move(selected().id, target_id);
+  if ( selectedSquare ) {
+    move(selectedSquare.id, e.target.id || e.target.parentElement.id);
   } else {
     if (e.target.tagName === "IMG") e.target.parentElement.select();
   }
 }
-
-function selected() {
-  return document.querySelector('.selected');
-};
 
 function highlightPossilbeMoves(square) {
   forEach(square.piece().possibleMoves(), function (index, square) {
@@ -119,14 +106,12 @@ var forEach = function (array, callback, scope) {
 
 board.addEventListener('mousedown', mousedown);
 
-forEach(draggables, function (index, draggable) {
+forEach(document.querySelectorAll('[draggable]'), function (index, draggable) {
   draggable.addEventListener('dragstart', dragstart);
 });
 
-forEach(droppables, function (index, droppable) {
-  Object.assign(droppable, Square);
-  droppable.addEventListener('dragover', dragover);
-  droppable.addEventListener('drop', drop);
+forEach(document.querySelectorAll('.square'), function (index, square) {
+  Square.new(square);
 });
 
 forEach(document.querySelectorAll('.pawn'), function (index, pawn) {
