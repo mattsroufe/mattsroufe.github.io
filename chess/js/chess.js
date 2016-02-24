@@ -86,28 +86,23 @@ function move(last_position, new_position) {
       targetPosition.appendChild(piece);
     }
   }
-  deSelect(selected());
+  selected().deSelect();
   forEach(document.querySelectorAll('.highlighted'), function (index, square) {
     square.classList.remove('highlighted');
   });
 };
 
-function mousedown () {
-  if (selected() === null && !this.isEmpty()) {
-    this.select();
-  } else if (selected() !== null) {
-    move(selected().id, this.id);
+function mousedown(e) {
+  if ( selected() ) {
+    var target_id = e.target.id || e.target.parentElement.id;
+    move(selected().id, target_id);
+  } else {
+    if (e.target.tagName === "IMG") e.target.parentElement.select();
   }
 }
 
 function selected() {
   return document.querySelector('.selected');
-};
-
-function deSelect(square) {
-  if (square !== null) {
-    square.classList.remove('selected');
-  }
 };
 
 function highlightPossilbeMoves(square) {
@@ -122,15 +117,16 @@ var forEach = function (array, callback, scope) {
   }
 };
 
+board.addEventListener('mousedown', mousedown);
+
 forEach(draggables, function (index, draggable) {
-  draggable.addEventListener('dragstart', dragstart, false);
+  draggable.addEventListener('dragstart', dragstart);
 });
 
 forEach(droppables, function (index, droppable) {
   Object.assign(droppable, Square);
-  droppable.addEventListener('dragover', dragover, false);
-  droppable.addEventListener('drop', drop, false);
-  droppable.addEventListener('mousedown', mousedown, false);
+  droppable.addEventListener('dragover', dragover);
+  droppable.addEventListener('drop', drop);
 });
 
 forEach(document.querySelectorAll('.pawn'), function (index, pawn) {

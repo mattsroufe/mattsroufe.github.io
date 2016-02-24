@@ -17,5 +17,8 @@ Square = {
   select: function () {
     this.classList.add('selected');
     highlightPossilbeMoves(this);
+  },
+  deSelect: function () {
+    this.classList.remove('selected');
   }
 };
