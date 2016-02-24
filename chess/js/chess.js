@@ -38,7 +38,7 @@ function mousedown(e) {
     // selectedPiece.moveTo(e.target.id || e.target.parentElement.id);
     move(selectedSquare.id, e.target.id || e.target.parentElement.id);
   } else {
-    if (e.target.tagName === "IMG") e.target.parentElement.select();
+    if (e.target.tagName === "DIV") e.target.parentElement.select();
   }
 }
 

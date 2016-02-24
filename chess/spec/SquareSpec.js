@@ -9,13 +9,13 @@ describe ("Square", function(){
 
   describe("#rank", function() {
     it ("returns the square's rank", function () {
-      expect(e2.rank()).toEqual(2);
+      expect(e2.rank).toEqual(2);
     });
   });
 
   describe("#file", function() {
     it ("returns the square's file", function () {
-      expect(e2.file()).toEqual("e");
+      expect(e2.file).toEqual("e");
     });
   });
 

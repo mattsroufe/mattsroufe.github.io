@@ -4,7 +4,7 @@ var WHITE = 'white';
 
 Piece = {
   color: function () {
-    return this.dataset.color;
+    return this.classList[1];
   },
   currentSquare: function () {
     return this.parentNode;

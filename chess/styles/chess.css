@@ -1,6 +1,9 @@
 body {
   font-family: sans-serif;
 }
+footer {
+  font-size: 75%;
+}
 table {
  text-align: center;
  border-collapse: collapse;
@@ -20,11 +23,48 @@ tr > td:first-child, tr:last-child > td  {
   background: none !important;
   border: none !important;
 }
-img {
-  vertical-align: middle;
-  height: 45px;
-  width: 45px;
-}
 .selected, .highlighted {
   background: #FFEB3B !important;
+}
+.piece {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.white.king {
+  background: url('../img/Chess_Pieces_Sprite.svg') 0 0;
+}
+.white.queen {
+  background: url('../img/Chess_Pieces_Sprite.svg') -45px 0;
+}
+.white.bishop {
+  background: url('../img/Chess_Pieces_Sprite.svg') -90px 0;
+}
+.white.knight {
+  background: url('../img/Chess_Pieces_Sprite.svg') -135px 0;
+}
+.white.rook {
+  background: url('../img/Chess_Pieces_Sprite.svg') 90px 0;
+}
+.white.pawn {
+  background: url('../img/Chess_Pieces_Sprite.svg') 45px 0;
+}
+.black.king {
+  background: url('../img/Chess_Pieces_Sprite.svg') 0 45px;
+}
+.black.queen {
+  background: url('../img/Chess_Pieces_Sprite.svg') -45px 45px;
+}
+.black.bishop {
+  background: url('../img/Chess_Pieces_Sprite.svg') -90px 45px;
+}
+.black.knight {
+  background: url('../img/Chess_Pieces_Sprite.svg') -135px 45px;
+}
+.black.rook {
+  background: url('../img/Chess_Pieces_Sprite.svg') 90px 45px;
+}
+.black.pawn {
+  background: url('../img/Chess_Pieces_Sprite.svg') 45px 45px;
 }
