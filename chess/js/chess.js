@@ -56,8 +56,9 @@ var forEach = function (array, callback, scope) {
 
 board.addEventListener('mousedown', mousedown);
 
-forEach(document.querySelectorAll('[draggable]'), function (index, draggable) {
-  draggable.addEventListener('dragstart', dragstart);
+forEach(document.querySelectorAll('.piece'), function (index, piece) {
+  piece.setAttribute("draggable", true);
+  piece.addEventListener('dragstart', dragstart);
 });
 
 forEach(document.querySelectorAll('.square'), function (index, square) {
