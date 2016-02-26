@@ -4,7 +4,7 @@ var WHITE = 'white';
 
 Piece = {
   color: function () {
-    return this.classList[1];
+    return this.className.match(BLACK) ? BLACK : WHITE
   },
   currentSquare: function () {
     return this.parentNode;
