@@ -26,7 +26,7 @@ function move(last_position, new_position) {
     }
   }
   selectedSquare.deSelect();
-  forEach(document.querySelectorAll('.highlighted'), function (index, square) {
+  Array.from(document.querySelectorAll('.highlighted'), (square) => {
     square.classList.remove('highlighted');
   });
 };
@@ -43,28 +43,20 @@ function mousedown(e) {
 }
 
 function highlightPossilbeMoves(square) {
-  forEach(square.piece().possibleMoves(), function (index, square) {
-    square.classList.add('highlighted');
+  Array.from(square.piece().possibleMoves(), (square) => {
+    square.classList.add('highlighted')
   });
-};
-
-var forEach = function (array, callback, scope) {
-  for (var i = 0; i < array.length; i++) {
-    callback.call(scope, i, array[i]);
-  }
 };
 
 board.addEventListener('mousedown', mousedown);
 
-forEach(document.querySelectorAll('.piece'), function (index, piece) {
+Array.from(board.querySelectorAll('.piece'), (piece) => {
   piece.setAttribute("draggable", true);
   piece.addEventListener('dragstart', dragstart);
 });
 
-forEach(document.querySelectorAll('.square'), function (index, square) {
-  Square.new(square);
-});
+Array.from(board.querySelectorAll('.square'), (el) => Square.new(el));
 
-forEach(document.querySelectorAll('.pawn'), function (index, pawn) {
+Array.from(board.querySelectorAll('.pawn'), (pawn) => {
   Object.assign(pawn, Piece, Pawn);
 });
