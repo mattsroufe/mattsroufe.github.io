@@ -30,7 +30,7 @@ Array.from(board.querySelectorAll('.square'), (el) => {
   // new Square(el):
   // if (child) new Piece(child);
   var square = Square.new(el);
-  var piece = square.piece();
+  var piece = square.piece;
 
   if (piece) {
     piece.setAttribute("draggable", true);

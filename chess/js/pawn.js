@@ -3,8 +3,8 @@ Pawn = {
     var moves = Moves.new([this.currentSquare()]);
     var nextRank = window[[this.file(), this.nextRank()].join('')];
     var secondRank = window[[this.file(), this.nextRank(2)].join('')];
-    if (nextRank.isEmpty()) moves.push(nextRank);
-    if (!!secondRank && secondRank.isEmpty() && this.atStartPosition()) moves.push(secondRank);
+    if (nextRank.isEmpty) moves.push(nextRank);
+    if (!!secondRank && secondRank.isEmpty && this.atStartPosition()) moves.push(secondRank);
 
     var previousFile = FILES[this.fileIndex() - 1];
     var nextFile = FILES[this.fileIndex() + 1];
