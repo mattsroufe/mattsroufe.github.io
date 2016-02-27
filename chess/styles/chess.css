@@ -23,7 +23,7 @@ tr > td:first-child, tr:last-child > td  {
   background: none !important;
   border: none !important;
 }
-.selected, .highlighted {
+.highlighted {
   background: #FFEB3B !important;
 }
 .piece {

@@ -14,49 +14,27 @@ function drop(e) {
   move(last_position, new_position);
 };
 
-function move(last_position, new_position) {
-  if (last_position !== new_position) {
-    var piece = window[last_position].piece();
-    var targetPosition = window[new_position];
-
-    if ( !targetPosition.isEmpty() ) {
-      targetPosition.replaceChild(piece, targetPosition.piece())
-    } else {
-      targetPosition.appendChild(piece);
-    }
-  }
-  selectedSquare.deSelect();
-  Array.from(document.querySelectorAll('.highlighted'), (square) => {
-    square.classList.remove('highlighted');
-  });
-};
-
 function mousedown(e) {
-  // var target = e.target;
-  if ( selectedSquare ) {
-    // if ( selectedPiece.possibleMoves().includes(target) )
-    // selectedPiece.moveTo(e.target.id || e.target.parentElement.id);
-    move(selectedSquare.id, e.target.id || e.target.parentElement.id);
+  if ( selectedPiece ) {
+    selectedPiece.move(e.target || e.target.parentElement);
   } else {
-    if (e.target.tagName === "DIV") e.target.parentElement.select();
+    if ( e.target.classList.contains('piece') ) e.target.select();
   }
 }
 
-function highlightPossilbeMoves(square) {
-  Array.from(square.piece().possibleMoves(), (square) => {
-    square.classList.add('highlighted')
-  });
-};
-
 board.addEventListener('mousedown', mousedown);
 
-Array.from(board.querySelectorAll('.piece'), (piece) => {
-  piece.setAttribute("draggable", true);
-  piece.addEventListener('dragstart', dragstart);
-});
+Array.from(board.querySelectorAll('.square'), (el) => {
+  // var child = el.firstChild;
 
-Array.from(board.querySelectorAll('.square'), (el) => Square.new(el));
+  // new Square(el):
+  // if (child) new Piece(child);
+  var square = Square.new(el);
+  var piece = square.piece();
 
-Array.from(board.querySelectorAll('.pawn'), (pawn) => {
-  Object.assign(pawn, Piece, Pawn);
+  if (piece) {
+    piece.setAttribute("draggable", true);
+    piece.addEventListener('dragstart', dragstart);
+    Object.assign(piece, Piece, Pawn);
+  }
 });

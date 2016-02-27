@@ -1,5 +1,3 @@
-var selectedSquare;
-
 Square = {
   new: function (el) {
     el.addEventListener('dragover', dragover);
@@ -16,14 +14,5 @@ Square = {
   },
   contains: function (color) {
     return this.isEmpty() ? false : this.piece().color() === color;
-  },
-  select: function () {
-    this.classList.add('selected');
-    selectedSquare = this;
-    highlightPossilbeMoves(this);
-  },
-  deSelect: function () {
-    this.classList.remove('selected');
-    selectedSquare = null;
   }
 };

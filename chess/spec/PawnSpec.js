@@ -3,7 +3,7 @@ describe ("Pawn", function(){
   describe("#possibleMoves", function() {
     it ("returns the pawn's possible moves", function () {
       var pawn = e2.piece();
-      expect(pawn.possibleMoves()).toEqual([e3, e4]);
+      expect(pawn.possibleMoves()).toEqual(Moves.new([e2, e3, e4]));
     });
   });
 
@@ -14,8 +14,20 @@ describe ("Pawn", function(){
     });
   });
 
-  // it ("highlights the selected square on mousedown", function () {
-  //   $('#e2').trigger('mousedown');
-  //   expect($("#e2")).toHaveClass('selected');
-  // });
+  describe("#select", function () {
+    it ("adds the selected class", function () {
+      var pawn = e2.piece();
+      expect(pawn).not.toHaveClass('selected');
+      pawn.select();
+      expect(pawn).toHaveClass('selected');
+    });
+  });
+
+  describe("#move", function () {
+    it ("moves the pawn to the new square", function () {
+      var pawn = e2.piece();
+      pawn.move(e4);
+      expect(pawn.currentSquare()).toEqual(e4);
+    });
+  });
 });
