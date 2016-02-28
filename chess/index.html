@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/chess.css">
   </head>
   <body>
-    <table id="board">
+    <table id="board" is="chess-board">
       <tbody>
         <tr>
           <td>8</td>
@@ -110,12 +110,64 @@
         </tr>
       </tbody>
     </table>
-
     <footer>
       <p>
         Chess pieces by jurgenwesterhof (adapted from work of Cburnett) [<a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>], <a href="https://commons.wikimedia.org/wiki/File%3AChess_Pieces_Sprite.svg">via Wikimedia Commons</a>
       </p>
     </footer>
+    <script>
+    function mousedown(e) {
+  if ( selectedPiece ) {
+    selectedPiece.move(e.target || e.target.parentElement);
+  } else {
+    if ( e.target.classList.contains('piece') ) e.target.select();
+  }
+}
+// Create a new object based of the HTMLElement prototype
+var ChessBoardProto = Object.create(HTMLElement.prototype);
+
+// Set up the element.
+ChessBoardProto.createdCallback = function() {
+  console.log('it works')
+  this.addEventListener('mousedown', mousedown);
+
+    // // Create a Shadow Root
+    // var shadow = this.createShadowRoot();
+
+    // // Create a standard img element and set it's attributes.
+    // var img = document.createElement('img');
+    // img.alt = this.getAttribute('data-name');
+    // img.src = this.getAttribute('data-img');
+    // img.width = '150';
+    // img.height = '150';
+    // img.className = 'product-img';
+
+    // // Add the image to the Shadow Root.
+    // shadow.appendChild(img);
+
+    // // Add an event listener to the image.
+    // img.addEventListener('click', function(e) {
+    //     window.location = this.getAttribute('data-url');
+    // });
+  
+    // // Create a link to the product.
+    // var link = document.createElement('a');
+    // link.innerText = this.getAttribute('data-name');
+    // link.href = this.getAttribute('data-url');
+    // link.className = 'product-name';
+
+    //         // Add the link to the Shadow Root.
+    // shadow.appendChild(link);
+};
+
+ChessBoardProto.foo = function () { console.log('it works') };
+
+// Register the new element.
+var chessBoard = document.registerElement('chess-board', {
+    prototype: ChessBoardProto,
+    extends: 'table'
+});
+    </script>
     <script src="js/square.js"></script>
     <script src="js/moves.js"></script>
     <script src="js/piece.js"></script>

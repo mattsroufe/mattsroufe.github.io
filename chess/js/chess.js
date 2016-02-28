@@ -14,15 +14,8 @@ function drop(e) {
   move(last_position, new_position);
 };
 
-function mousedown(e) {
-  if ( selectedPiece ) {
-    selectedPiece.move(e.target || e.target.parentElement);
-  } else {
-    if ( e.target.classList.contains('piece') ) e.target.select();
-  }
-}
 
-board.addEventListener('mousedown', mousedown);
+
 
 Array.from(board.querySelectorAll('.square'), (el) => {
   // var child = el.firstChild;
