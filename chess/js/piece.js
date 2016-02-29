@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var FILES = 'abcdefgh'.split('')
 var BLACK = 'black';

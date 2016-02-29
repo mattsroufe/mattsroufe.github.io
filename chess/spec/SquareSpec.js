@@ -22,13 +22,13 @@ describe ("Square", function(){
   describe("#isEmpty", function() {
     describe("when the square contains a piece", function() {
       it ("returns false", function () {
-        expect(e2.isEmpty).toBe(false);
+        expect(e2.isEmpty()).toBe(false);
       });
     });
 
     describe("when the square does not contain a piece", function() {
       it ("returns true", function () {
-        expect(e3.isEmpty).toBe(true);
+        expect(e3.isEmpty()).toBe(true);
       });
     });
   });
