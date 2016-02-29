@@ -10,7 +10,7 @@ describe ("Pawn", function(){
   describe("#color", function() {
     it ("returns the pawn's color", function () {
       var pawn = e2.piece;
-      expect(pawn.color()).toEqual(WHITE);
+      expect(pawn.color.toEqual(WHITE);
     });
   });
 

@@ -21,7 +21,7 @@ document.registerElement('chess-square', {
     },
     contains: {
       value: function (color) {
-        return this.isEmpty ? false : this.piece.color() === color;
+        return this.isEmpty ? false : this.piece.color === color;
       }
     },
     rank: {
