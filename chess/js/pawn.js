@@ -20,7 +20,7 @@ class Pawn extends Piece {
   }
 
   possibleMoves() {
-    var moves = Moves.new([this.currentSquare()]);
+    var moves = new Moves(this.square);
     var nextRank = window[[this.file(), this.nextRank()].join('')];
     var secondRank = window[[this.file(), this.nextRank(2)].join('')];
     if (nextRank.isEmpty) moves.push(nextRank);

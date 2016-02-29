@@ -1,21 +1,16 @@
-Moves = (function () {
-  var highlight = function () {
+'use strict';
+
+class Moves extends Array {
+
+  highlight() {
     this.forEach(function (square) {
       square.classList.add('highlighted');
     });
-  };
-  var unHighlight = function () {
+  }
+
+  unHighlight() {
     this.forEach(function (square) {
       square.classList.remove('highlighted');
     });
   };
-
-  return {
-    new: function (squares) {
-      return Object.assign(squares, {
-        highlight: highlight,
-        unHighlight: unHighlight
-      });
-    }
-  }
-})();
+}

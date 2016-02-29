@@ -22,14 +22,14 @@ class Piece extends HTMLElement {
   }
 
   rank() {
-    return this.currentSquare().rank;
+    return this.square.rank;
   }
 
   file() {
-    return this.currentSquare().file;
+    return this.square.file;
   }
 
-  currentSquare() {
+  get square() {
     return this.parentNode;
   }
 
@@ -48,7 +48,7 @@ class Piece extends HTMLElement {
   move(target) {
     var possibleMoves = this.possibleMoves();
     if (target.classList.contains('piece')) {
-      if (target !== this) target.currentSquare().replaceChild(this, target);
+      if (target !== this) target.square.replaceChild(this, target);
     } else {
       target.appendChild(this);
     }
