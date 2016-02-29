@@ -1,6 +1,6 @@
 'use strict'
 
-class ChessBoard extends HTMLElement {
+class Board extends HTMLElement {
   static get extends() { return 'table'; }
   // Fires when an instance of the element is created.
   createdCallback() {
@@ -20,4 +20,4 @@ class ChessBoard extends HTMLElement {
   attributeChangedCallback(attr, oldVal, newVal) {};
 }
 
-document.registerElement('chess-board', ChessBoard);
+document.registerElement('chess-board', Board);
