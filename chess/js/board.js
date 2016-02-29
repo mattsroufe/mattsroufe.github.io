@@ -5,8 +5,8 @@ class Board extends HTMLElement {
   // Fires when an instance of the element is created.
   createdCallback() {
     this.addEventListener('mousedown', function (e) {
-      if ( selectedPiece ) {
-        selectedPiece.move(e.target || e.target.parentElement);
+      if ( Piece.selected ) {
+        Piece.selected.move(e.target || e.target.parentElement);
       } else {
         if ( e.target instanceof Piece ) e.target.select();
       }

@@ -3,7 +3,6 @@
 var FILES = 'abcdefgh'.split('')
 var BLACK = 'black';
 var WHITE = 'white';
-var selectedPiece;
 
 class Piece extends HTMLElement {
   static get extends() { return 'div'; }
@@ -49,14 +48,14 @@ class Piece extends HTMLElement {
   }
 
   select() {
-    this.classList.add('selected');
-    selectedPiece = this;
+    this.setAttribute('selected', true);
+    Piece.selected = this;
     this.possibleMoves().highlight();
   }
 
   deSelect() {
-    this.classList.remove('selected');
-    selectedPiece = null;
+    this.setAttribute('selected', false);
+    Piece.selected = null;
     return this;
   }
 
