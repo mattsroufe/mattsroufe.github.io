@@ -47,7 +47,7 @@ tr > td:first-child, tr:last-child > td  {
 .white.rook {
   background: url('../img/Chess_Pieces_Sprite.svg') 90px 0;
 }
-.white.pawn {
+.pawn[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 45px 0;
 }
 .black.king {
@@ -65,6 +65,6 @@ tr > td:first-child, tr:last-child > td  {
 .black.rook {
   background: url('../img/Chess_Pieces_Sprite.svg') 90px 45px;
 }
-.black.pawn {
+.pawn[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 45px 45px;
 }

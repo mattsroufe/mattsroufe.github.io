@@ -9,11 +9,14 @@ class Piece extends HTMLElement {
   static get extends() { return 'div'; }
 
   createdCallback() {
-    this.color = this.classList.contains(BLACK) ? BLACK : WHITE
     this.setAttribute("draggable", true);
     this.addEventListener('dragstart', function(e) {
       e.dataTransfer.setData("text/plain", e.target.parentNode.id);
     });
+  }
+
+  get color() {
+    return this.getAttribute('color');
   }
 
   rank() {
