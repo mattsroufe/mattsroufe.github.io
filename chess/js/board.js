@@ -8,7 +8,7 @@ class Board extends HTMLElement {
       if ( selectedPiece ) {
         selectedPiece.move(e.target || e.target.parentElement);
       } else {
-        if ( e.target.classList.contains('piece') ) e.target.select();
+        if ( e.target instanceof Piece ) e.target.select();
       }
     });
   };
