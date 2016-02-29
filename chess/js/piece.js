@@ -5,7 +5,6 @@ var BLACK = 'black';
 var WHITE = 'white';
 
 class Piece extends HTMLElement {
-  static get extends() { return 'div'; }
 
   createdCallback() {
     this.setAttribute("draggable", true);
