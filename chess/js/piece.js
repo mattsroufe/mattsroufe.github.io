@@ -17,6 +17,10 @@ class Piece extends HTMLElement {
     return this.getAttribute('color');
   }
 
+  get selected() {
+    return this.getAttribute('selected');
+  }
+
   rank() {
     return this.currentSquare().rank;
   }
@@ -27,23 +31,6 @@ class Piece extends HTMLElement {
 
   currentSquare() {
     return this.parentNode;
-  }
-
-  nextRank(amount) {
-    if (amount === undefined) amount = 1
-    return this.rank() + ((this.color === BLACK) ? -amount : amount)
-  }
-
-  fileIndex() {
-    return FILES.indexOf(this.file());
-  }
-
-  atStartPosition() {
-    return (this.color === BLACK) ? this.rank() === 7 : this.rank() === 2
-  }
-
-  opponentColor() {
-    return this.color === BLACK ? WHITE : BLACK
   }
 
   select() {

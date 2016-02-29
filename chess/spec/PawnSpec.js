@@ -17,9 +17,9 @@ describe ("Pawn", function(){
   describe("#select", function () {
     it ("adds the selected class", function () {
       var pawn = e2.piece;
-      expect(pawn).not.toHaveClass('selected');
+      expect(pawn.selected).toBe(null);
       pawn.select();
-      expect(pawn).toHaveClass('selected');
+      expect(pawn.selected).toBe('true');
     });
   });
 

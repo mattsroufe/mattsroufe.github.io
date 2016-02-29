@@ -2,7 +2,7 @@ describe ("Square", function(){
 
   describe("#piece", function() {
     it ("returns the piece on the square", function () {
-      expect(e2.piece).toHaveClass("pawn");
+      expect(e2.piece instanceof Pawn).toBe(true);
       expect(e3.piece).toBeNull();
     });
   });

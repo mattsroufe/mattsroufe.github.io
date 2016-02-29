@@ -2,6 +2,23 @@
 
 class Pawn extends Piece {
 
+  nextRank(amount) {
+    if (amount === undefined) amount = 1
+    return this.rank() + ((this.color === BLACK) ? -amount : amount)
+  }
+
+  fileIndex() {
+    return FILES.indexOf(this.file());
+  }
+
+  atStartPosition() {
+    return (this.color === BLACK) ? this.rank() === 7 : this.rank() === 2
+  }
+
+  opponentColor() {
+    return this.color === BLACK ? WHITE : BLACK
+  }
+
   possibleMoves() {
     var moves = Moves.new([this.currentSquare()]);
     var nextRank = window[[this.file(), this.nextRank()].join('')];
