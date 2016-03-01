@@ -2,16 +2,11 @@
 
 class Pawn extends Piece {
 
-  nextRank(amount) {
-    if (amount === undefined) amount = 1
-    return this.rank + ((this.color === BLACK) ? -amount : amount)
+  forward(int) {
+    return this.rank + ((this.color === BLACK) ? -int : int)
   }
 
-  fileIndex() {
-    return FILES.indexOf(this.file);
-  }
-
-  atStartPosition() {
+  onStartingRank() {
     return (this.color === BLACK) ? this.rank === 7 : this.rank === 2
   }
 
@@ -21,17 +16,16 @@ class Pawn extends Piece {
 
   possibleMoves() {
     var moves = [];
-    var nextRank = window[[this.file, this.nextRank()].join('')];
-    var secondRank = window[[this.file, this.nextRank(2)].join('')];
-    if (nextRank.isEmpty()) moves.push(nextRank);
-    if (!!secondRank && secondRank.isEmpty() && this.atStartPosition()) moves.push(secondRank);
-    var previousFile = FILES[this.fileIndex() - 1];
-    var nextFile = FILES[this.fileIndex() + 1];
-    var leftAttackSquare = window[[previousFile, this.nextRank()].join('')]
-    if (!!leftAttackSquare && leftAttackSquare.contains(this.opponentColor())) moves.push(leftAttackSquare);
-    var rightAttackSquare = window[[nextFile, this.nextRank()].join('')]
-    if (!!rightAttackSquare && rightAttackSquare.contains(this.opponentColor())) moves.push(rightAttackSquare);
-    // TODO: fix case where pawn can still move two at start even if a piece is in the way
+    var nextRank = window[this.file + this.forward(1)];
+    if ( nextRank && nextRank.isEmpty() ) moves.push(nextRank);
+    var secondRank = window[this.file + this.forward(2)];
+    if (moves.length > 0 && secondRank && secondRank.isEmpty() && this.onStartingRank()) moves.push(secondRank);
+    var previousFile = Board.findRelativeFile(this.file, -1);
+    var nextFile = Board.findRelativeFile(this.file, 1);
+    var left = window[[previousFile, this.forward(1)].join('')]
+    if (left && left.contains(this.opponentColor())) moves.push(left);
+    var right = window[[nextFile, this.forward(1)].join('')]
+    if (right && right.contains(this.opponentColor())) moves.push(right);
     // TODO: implement en passant
     return moves;
   }

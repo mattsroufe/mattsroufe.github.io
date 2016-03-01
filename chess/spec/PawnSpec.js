@@ -7,6 +7,8 @@ describe ("Pawn", function(){
 
   describe("#possibleMoves", function() {
     it ("returns the pawn's possible moves", function () {
+      g1.piece.move(f3);
+      expect(f2.piece.possibleMoves()).toEqual([]);
       expect(pawn.possibleMoves()).toEqual([e3, e4]);
       pawn.move(e6);
       expect(pawn.possibleMoves().length).toEqual(2);
