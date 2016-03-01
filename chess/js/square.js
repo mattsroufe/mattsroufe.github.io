@@ -10,7 +10,7 @@ class Square extends HTMLElement {
   }
 
   static removeHighlighting() {
-    this._highlighted.forEach((square) => {
+    (this._highlighted || []).forEach((square) => {
       square.classList.remove('highlighted');
     });
   }
