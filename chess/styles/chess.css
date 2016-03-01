@@ -12,19 +12,20 @@ td {
   height: 54px;
   width: 54px;
   border: 1px solid black;
+  background: #f0d9b5;
 }
 tr:nth-child(odd) > td:nth-child(odd) {
-  background: #4CAF50;
+  background: #b58863;
 }
 tr:nth-child(even) > td:nth-child(even) {
-  background: #4CAF50;
+  background: #b58863;
 }
 tr > td:first-child, tr:last-child > td  {
   background: none !important;
   border: none !important;
 }
 .highlighted {
-  background: #FFEB3B !important;
+  background: #FFF495 !important;
 }
 .piece {
   width: 45px;

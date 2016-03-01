@@ -2,8 +2,23 @@
 
 class Board extends HTMLElement {
   static get extends() { return 'table'; }
+
   // Fires when an instance of the element is created.
   createdCallback() {
+    function dragover(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    };
+
+    function drop(e) {
+      e.preventDefault();
+      var last_position = e.dataTransfer.getData("text");
+      var new_position  = (e.target.id.length > 0) ? e.target.id : e.target.parentNode.id;
+      console.log(last_position, new_position);
+    };
+
+    this.addEventListener('dragover', dragover);
+    this.addEventListener('drop', drop);
     this.addEventListener('mousedown', function (e) {
       if ( Piece.selected ) {
         Piece.selected.move(e.target || e.target.parentElement);
