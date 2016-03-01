@@ -16,7 +16,6 @@ class Square extends HTMLElement {
   }
 
   createdCallback() {
-
     this.rank = parseInt(this.id.charAt(1));
     this.file = this.id.charAt(0);
   }

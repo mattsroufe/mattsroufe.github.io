@@ -1,7 +1,5 @@
 'use strict';
 
-var RANKS = '12345678';
-var FILES = 'abcdefgh';
 var BLACK = 'black';
 var WHITE = 'white';
 

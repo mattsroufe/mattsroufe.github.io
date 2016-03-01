@@ -9,7 +9,9 @@ describe ("Pawn", function(){
     it ("returns the pawn's possible moves", function () {
       expect(pawn.possibleMoves()).toEqual([e3, e4]);
       pawn.move(e6);
-      expect(pawn.possibleMoves().map((move) => move.id)).toEqual(['d7', 'f7']);
+      expect(pawn.possibleMoves().length).toEqual(2);
+      expect(pawn.possibleMoves()).toContain(d7);
+      expect(pawn.possibleMoves()).toContain(f7);
     });
   });
 
