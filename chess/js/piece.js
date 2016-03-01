@@ -16,10 +16,6 @@ class Piece extends HTMLElement {
     return this.getAttribute('color');
   }
 
-  opponentColor() {
-    return this.color === BLACK ? WHITE : BLACK
-  }
-
   get selected() {
     return this.getAttribute('selected');
   }
