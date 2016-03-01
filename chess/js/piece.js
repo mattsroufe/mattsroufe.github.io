@@ -1,6 +1,7 @@
 'use strict';
 
-var FILES = 'abcdefgh'.split('')
+var RANKS = '12345678';
+var FILES = 'abcdefgh';
 var BLACK = 'black';
 var WHITE = 'white';
 
@@ -17,15 +18,19 @@ class Piece extends HTMLElement {
     return this.getAttribute('color');
   }
 
+  opponentColor() {
+    return this.color === BLACK ? WHITE : BLACK
+  }
+
   get selected() {
     return this.getAttribute('selected');
   }
 
-  rank() {
+  get rank() {
     return this.square.rank;
   }
 
-  file() {
+  get file() {
     return this.square.file;
   }
 

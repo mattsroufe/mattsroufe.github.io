@@ -4,15 +4,15 @@ class Pawn extends Piece {
 
   nextRank(amount) {
     if (amount === undefined) amount = 1
-    return this.rank() + ((this.color === BLACK) ? -amount : amount)
+    return this.rank + ((this.color === BLACK) ? -amount : amount)
   }
 
   fileIndex() {
-    return FILES.indexOf(this.file());
+    return FILES.indexOf(this.file);
   }
 
   atStartPosition() {
-    return (this.color === BLACK) ? this.rank() === 7 : this.rank() === 2
+    return (this.color === BLACK) ? this.rank === 7 : this.rank === 2
   }
 
   opponentColor() {
@@ -21,8 +21,8 @@ class Pawn extends Piece {
 
   possibleMoves() {
     var moves = [];
-    var nextRank = window[[this.file(), this.nextRank()].join('')];
-    var secondRank = window[[this.file(), this.nextRank(2)].join('')];
+    var nextRank = window[[this.file, this.nextRank()].join('')];
+    var secondRank = window[[this.file, this.nextRank(2)].join('')];
     if (nextRank.isEmpty()) moves.push(nextRank);
     if (!!secondRank && secondRank.isEmpty() && this.atStartPosition()) moves.push(secondRank);
     var previousFile = FILES[this.fileIndex() - 1];
