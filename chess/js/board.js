@@ -1,7 +1,20 @@
 'use strict'
 
+var RANKS = '12345678';
+var FILES = 'abcdefgh';
+
 class Board extends HTMLElement {
   static get extends() { return 'table'; }
+
+  static findRelativeRank(rank, int) {
+    var relativeRank = RANKS.charAt(RANKS.indexOf(rank) + int)
+    if ( relativeRank ) return relativeRank;
+  }
+
+  static findRelativeFile(file, int) {
+    var relativeFile = FILES.charAt(FILES.indexOf(file) + int)
+    if ( relativeFile ) return relativeFile;
+  }
 
   // Fires when an instance of the element is created.
   createdCallback() {
