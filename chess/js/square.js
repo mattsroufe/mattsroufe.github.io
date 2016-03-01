@@ -3,6 +3,18 @@
 class Square extends HTMLElement {
   static get extends() { return 'td'; }
 
+  static highlight(squares) {
+    (this._highlighted = squares).forEach((square) => {
+      square.classList.add('highlighted');
+    });
+  }
+
+  static removeHighlighting() {
+    this._highlighted.forEach((square) => {
+      square.classList.remove('highlighted');
+    });
+  }
+
   createdCallback() {
     function dragover(e) {
       e.preventDefault();

@@ -36,24 +36,24 @@ class Piece extends HTMLElement {
   select() {
     this.setAttribute('selected', true);
     Piece.selected = this;
-    this.possibleMoves().highlight();
+    Square.highlight(this.possibleMoves().concat(this.square));
+    return this;
   }
 
   deSelect() {
     this.setAttribute('selected', false);
     Piece.selected = null;
+    Square.removeHighlighting();
     return this;
   }
 
   move(target) {
-    var possibleMoves = this.possibleMoves();
     if (target.classList.contains('piece')) {
       if (target !== this) target.square.replaceChild(this, target);
     } else {
       target.appendChild(this);
     }
     this.deSelect();
-    possibleMoves.unHighlight();
   }
 }
 
