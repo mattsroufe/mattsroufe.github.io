@@ -10,22 +10,22 @@ class Pawn extends Piece {
     return (this.color === BLACK) ? this.rank === 7 : this.rank === 2
   }
 
-  opponentColor() {
-    return this.color === BLACK ? WHITE : BLACK
-  }
-
   possibleMoves() {
-    var moves = [];
-    var nextRank = window[this.file + this.forward(1)];
-    if ( nextRank && nextRank.isEmpty() ) moves.push(nextRank);
-    var secondRank = window[this.file + this.forward(2)];
-    if (moves.length > 0 && secondRank && secondRank.isEmpty() && this.onStartingRank()) moves.push(secondRank);
-    var previousFile = Board.findRelativeFile(this.file, -1);
-    var nextFile = Board.findRelativeFile(this.file, 1);
-    var left = window[[previousFile, this.forward(1)].join('')]
-    if (left && left.contains(this.opponentColor())) moves.push(left);
-    var right = window[[nextFile, this.forward(1)].join('')]
-    if (right && right.contains(this.opponentColor())) moves.push(right);
+    var moves     = [],
+        next_rank = this.forward(1),
+        forward_1 = window[this.file + next_rank],
+        forward_2;
+
+    if ( forward_1 && forward_1.isEmpty() ) {
+      moves.push(forward_1);
+      forward_2 = window[this.file + this.forward(2)];
+      if ( forward_2 && forward_2.isEmpty() && this.onStartingRank() ) moves.push(forward_2);
+    }
+
+    [-1,1].forEach((i) => {
+      var square = window[Board.findRelativeFile(this.file, i) + next_rank];
+      if ( square && square.contains(this.opponent) ) moves.push(square);
+    });
     // TODO: implement en passant
     return moves;
   }

@@ -32,6 +32,10 @@ class Piece extends HTMLElement {
     return this.parentNode;
   }
 
+  get opponent() {
+    return this.color === BLACK ? WHITE : BLACK
+  }
+
   select() {
     this.setAttribute('selected', true);
     Piece.selected = this;
