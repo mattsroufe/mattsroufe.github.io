@@ -1,5 +1,12 @@
 describe ("Square", function(){
 
+  describe(".find", function() {
+    it ("it finds the square at the id", function () {
+      expect(Square.find('e2')).toEqual(e2);
+      expect(Square.find('e10')).toBeUndefined();
+    });
+  });
+
   describe("#piece", function() {
     it ("returns the piece on the square", function () {
       expect(e2.piece instanceof Pawn).toBe(true);

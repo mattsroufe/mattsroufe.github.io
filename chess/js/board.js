@@ -7,13 +7,11 @@ class Board extends HTMLElement {
   static get extends() { return 'table'; }
 
   static findRelativeRank(rank, int) {
-    var relativeRank = RANKS.charAt(RANKS.indexOf(rank) + int)
-    if ( relativeRank ) return relativeRank;
+    return RANKS[RANKS.indexOf(rank) + int];
   }
 
   static findRelativeFile(file, int) {
-    var relativeFile = FILES.charAt(FILES.indexOf(file) + int)
-    if ( relativeFile ) return relativeFile;
+    return FILES[FILES.indexOf(file) + int];
   }
 
   // Fires when an instance of the element is created.

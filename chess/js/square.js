@@ -15,6 +15,10 @@ class Square extends HTMLElement {
     });
   }
 
+  static find(id) {
+    return window[id];
+  }
+
   createdCallback() {
     this.rank = parseInt(this.id.charAt(1));
     this.file = this.id.charAt(0);

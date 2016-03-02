@@ -13,17 +13,17 @@ class Pawn extends Piece {
   possibleMoves() {
     var moves     = [],
         next_rank = this.forward(1),
-        forward_1 = window[this.file + next_rank],
+        forward_1 = Square.find(this.file + next_rank),
         forward_2;
 
     if ( forward_1 && forward_1.isEmpty() ) {
       moves.push(forward_1);
-      forward_2 = window[this.file + this.forward(2)];
+      forward_2 = Square.find(this.file + this.forward(2));
       if ( forward_2 && forward_2.isEmpty() && this.onStartingRank() ) moves.push(forward_2);
     }
 
     [-1,1].forEach((i) => {
-      var square = window[Board.findRelativeFile(this.file, i) + next_rank];
+      var square = Square.find(Board.findRelativeFile(this.file, i) + next_rank);
       if ( square && square.contains(this.opponent) ) moves.push(square);
     });
     // TODO: implement en passant
