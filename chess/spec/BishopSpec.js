@@ -6,7 +6,7 @@ describe ("Bishop", function(){
   });
 
   describe("#possibleMoves", function() {
-    it ("returns the bishops's possible moves", function () {
+    it ("returns the bishop's possible moves", function () {
       possibleMoves = bishop.possibleMoves();
       expect(possibleMoves).toEqual([]);
 

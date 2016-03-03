@@ -45,7 +45,7 @@ chess-bishop[color='white'] {
 chess-knight[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') -135px 0;
 }
-.white.rook {
+chess-rook[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 90px 0;
 }
 chess-pawn[color='white'] {
@@ -63,7 +63,7 @@ chess-bishop[color='black'] {
 chess-knight[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') -135px 45px;
 }
-.black.rook {
+chess-rook[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 90px 45px;
 }
 chess-pawn[color='black'] {
