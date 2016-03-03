@@ -33,7 +33,7 @@ tr > td:first-child, tr:last-child > td  {
   display: inline-block;
   vertical-align: middle;
 }
-.white.king {
+chess-king[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 0 0;
 }
 .white.queen {
@@ -51,7 +51,7 @@ chess-rook[color='white'] {
 chess-pawn[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 45px 0;
 }
-.black.king {
+chess-king[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 0 45px;
 }
 .black.queen {
