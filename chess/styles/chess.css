@@ -23,6 +23,9 @@ tr:nth-child(even) > td:nth-child(even) {
 tr > td:first-child, tr:last-child > td  {
   background: none !important;
   border: none !important;
+  height: auto;
+  width: auto;
+  padding: 10px;
 }
 .highlighted {
   background: #FFF495 !important;
