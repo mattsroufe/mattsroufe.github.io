@@ -28,7 +28,10 @@ tr > td:first-child, tr:last-child > td  {
   padding: 10px;
 }
 .highlighted {
-  background: #FFF495 !important;
+  outline: yellow;
+  outline-style: dashed;
+  outline-offset: -1px;
+  /*background: #FFF495 !important;*/
 }
 .piece {
   width: 45px;
