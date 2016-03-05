@@ -1,4 +1,4 @@
-describe ("Board", function(){
+describe ("Board", function() {
 
   describe("#findRelativeRank", function() {
     it ("returns the rank relative to another", function () {

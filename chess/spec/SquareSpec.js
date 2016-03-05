@@ -1,4 +1,4 @@
-describe ("Square", function(){
+describe ("Square", function() {
 
   describe(".find", function() {
     it ("it finds the square at the id", function () {

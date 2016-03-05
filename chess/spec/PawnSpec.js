@@ -1,4 +1,4 @@
-describe ("Pawn", function(){
+describe ("Pawn", function() {
   var pawn;
 
   beforeEach(function() {

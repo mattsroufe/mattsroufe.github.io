@@ -1,4 +1,4 @@
-describe ("King", function(){
+describe ("King", function() {
   var king, possibleMoves;
 
   beforeEach(function() {
@@ -20,6 +20,9 @@ describe ("King", function(){
       expect(possibleMoves).toContain(e2);
       expect(possibleMoves).toContain(f1);
       expect(possibleMoves).toContain(g1);
+
+      // king.move(g1);
+      // expect(f1.piece instanceof Rook).toBe(true);
     });
   });
 });

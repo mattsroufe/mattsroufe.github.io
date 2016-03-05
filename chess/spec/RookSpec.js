@@ -1,4 +1,4 @@
-describe ("Rook", function(){
+describe ("Rook", function() {
   var rook, possibleMoves;
 
   beforeEach(function() {

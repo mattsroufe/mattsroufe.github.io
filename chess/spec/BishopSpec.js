@@ -1,4 +1,4 @@
-describe ("Bishop", function(){
+describe ("Bishop", function() {
   var bishop, possibleMoves;
 
   beforeEach(function() {
