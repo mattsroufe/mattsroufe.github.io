@@ -36,6 +36,10 @@ class Piece extends HTMLElement {
     return this.color === BLACK ? WHITE : BLACK
   }
 
+  possibleMoves() {
+    return chess.moves({square: this.square.id, verbose: true}).map((move) => window[move.to]);
+  }
+
   select() {
     this.setAttribute('selected', true);
     Piece.selected = this;
@@ -51,10 +55,16 @@ class Piece extends HTMLElement {
   }
 
   move(target) {
-    if (target.classList.contains('piece')) {
-      if (target !== this) target.square.replaceChild(this, target);
-    } else {
-      target.appendChild(this);
+    if (target !== this) {
+      var from = this.square, to;
+      if (target.classList.contains('piece')) {
+        to = target.square;
+        to.replaceChild(this, target);
+      } else {
+        to = target;
+        target.appendChild(this);
+      }
+      chess.move({from: from.id, to: to.id});
     }
     this.deSelect();
   }
