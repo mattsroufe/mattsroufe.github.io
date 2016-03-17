@@ -42,7 +42,7 @@ tr > td:first-child, tr:last-child > td  {
 chess-king[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 0 0;
 }
-.white.queen {
+chess-queen[color='white'] {
   background: url('../img/Chess_Pieces_Sprite.svg') -45px 0;
 }
 chess-bishop[color='white'] {
@@ -60,7 +60,7 @@ chess-pawn[color='white'] {
 chess-king[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') 0 45px;
 }
-.black.queen {
+chess-queen[color='black'] {
   background: url('../img/Chess_Pieces_Sprite.svg') -45px 45px;
 }
 chess-bishop[color='black'] {
