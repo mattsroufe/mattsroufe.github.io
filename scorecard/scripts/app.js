@@ -3,6 +3,9 @@
   'use strict';
 
   // Insert injected weather forecast here
+  var initialScoreCard = {
+    players: []
+  };
   var initialWeatherForecast = {
     key: 'newyork',
     label: 'New York, NY',
