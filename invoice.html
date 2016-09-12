@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mattsroufe</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/resume.css">
+  <script src="js/moment.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .line-items th {
+      border-top: 2px solid black;
+      padding: 10px;
+    }
+    .line-items th:first-child {
+      text-align: left;
+      padding: 5px 5px 5px 0;
+    }
+    .line-items td:first-child {
+      padding-left: 0;
+    }
+    .line-items th:last-child {
+      padding-right: 0;
+    }
+    .line-items tr:not(:last-child) td {
+      border-top: 1px solid lightgray;
+    }
+    .line-items td:nth-child(n+3), th:nth-child(n+3) {
+      padding-right: 0;
+      text-align: right;
+    }
+    .name {
+      text-align: center;
+      position: inherit;
+      float: none;
+      background: rgba(234,241,221,1);
+    }
+    .address {
+      text-align: center;
+    }
+    .details {
+      margin-bottom: 24px;
+    }
+    .details th, td {
+      text-align: left;
+      padding: 0;
+    }
+    .details .invoice-heading {
+      vertical-align: top;
+      font-size: 200%;
+    }
+    .heading {
+      border-bottom: 1px solid lightgray;
+    }
+    .right {
+      text-align: right;
+    }
+  </style>
+  <link rel="icon" type="image/png" href="images/favicon.ico">
+</head>
+<body>
+  <div class="container">
+    <table class="details">
+      <col width="60%">
+      <col width="20%">
+      <col width="20%">
+      <tr>
+        <td class="invoice-heading" rowspan="4">TAX INVOICE</td>
+        <th colspan="2" id='company-name'></th>
+      </tr>
+      <tr>
+        <td id='company-address-line-1'></td>
+      </tr>
+      <tr>
+        <td id='company-address-line-2'></td>
+      </tr>
+      <tr>
+        <td colspan="2" id='company-address-line-3'></td>
+      </tr>
+      <tr>
+        <td class="heading" colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3">&nbsp;<td>
+      </tr>
+      <tr>
+              <td id='client-name'></td>
+              <td></td>
+              <td></td>
+      </tr>
+              <tr>
+              <td id='client-title'></td>
+              <th>GST Number:</th>
+              <td id='gst-number'></td>
+            </tr>
+            <tr>
+              <td id='client-company-name'></td>
+              <th>Invoice id:</th>
+              <td id='invoice-number'></td>
+            </tr>
+            <tr>
+              <td id='client-id'></td>
+              <th>Invoice date:</th>
+              <td id="invoice-date"></td>
+            </tr>
+            <tr>
+              <td id='client-address-line-1'></td>
+              <th>Period Covered:</th>
+              <td rowspan="2"><span id="start-date"></span> to <span id="end-date"></span></td>
+            </tr>
+      <tr>
+        <td id='client-address-line-2'></td>
+      </tr>
+    </table>
+    <table class="line-items">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+  </table>
+  <table>
+    <tr>
+      <td>For direct bank payment</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td id='account-name'></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td id='account-number'></td>
+      <td class="right">Subject provided is a zero-rated supply</td>
+    </tr>
+  </div>
+  <script>
+    numberToCurrency = function (num) {
+      return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    };
+    document.getElementById('company-name').innerText = localStorage.getItem('companyName');
+    document.getElementById('company-address-line-1').innerText = localStorage.getItem('companyAddressLine1');
+    document.getElementById('company-address-line-2').innerText = localStorage.getItem('companyAddressLine2');
+    document.getElementById('company-address-line-3').innerText = localStorage.getItem('companyAddressLine3');
+    document.getElementById('invoice-date').innerText = moment().format('DD/MM/YYYY');
+    document.getElementById('client-name').innerText = localStorage.getItem('clientName');
+    document.getElementById('client-title').innerText = localStorage.getItem('clientTitle');
+    document.getElementById('gst-number').innerText = localStorage.getItem('gstNumber');
+    document.getElementById('client-company-name').innerText = localStorage.getItem('clientCompanyName');
+    document.getElementById('invoice-number').innerText = Math.floor(moment().diff(moment([2016,5,1]), 'months', true));
+    document.getElementById('client-id').innerText = localStorage.getItem('clientId');
+    document.getElementById('client-address-line-1').innerText = localStorage.getItem('clientAddressLine1');
+    document.getElementById('client-address-line-2').innerText = localStorage.getItem('clientAddressLine2');
+    document.getElementById('account-name').innerText = localStorage.getItem('accountName');
+    document.getElementById('account-number').innerText = localStorage.getItem('accountNumber');
+    var total = 0;
+    var rate = parseInt(localStorage.getItem('rate'));
+    var qty = 7;;
+    var date = moment().subtract(1, 'month').startOf('month');
+    document.getElementById('start-date').innerText = date.format('DD/MM/YYYY');
+    var tbody = document.createElement('tbody');
+    while ( date.isBefore(moment().startOf('month')) ) {
+     if ( date.day() < 6 && date.day() > 0 ) {
+        var tr = document.createElement('tr');
+        var subtotal = qty * rate;
+        tr.innerHTML =
+          '<td>' + date.format('DD/MM/YYYY') + '</td>' +
+          '<td>Software development services</td>' +
+          '<td>' + qty + '</td>' +
+          '<td>' + numberToCurrency(rate) + '</td>' +
+          '<td>' + numberToCurrency(subtotal) + '</td>';
+        ;
+        total += subtotal;
+        tbody.appendChild(tr);
+      }
+      date.add(1, 'day');
+    }
+    document.getElementById('end-date').innerText = date.subtract(1, 'day').format('DD/MM/YYYY');
+    var totalRow = document.createElement('tr');
+    totalRow.innerHTML = '<td></td><td></td><td></td><th>Total</th><th>NZ$' + numberToCurrency(total) + '</th>';
+    tbody.appendChild(totalRow);
+    document.querySelector('.line-items').appendChild(tbody);
+  </script>
+</body>
+</html>
