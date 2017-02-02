@@ -149,48 +149,57 @@
     numberToCurrency = function (num) {
       return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     };
-    document.getElementById('company-name').innerText = localStorage.getItem('companyName');
-    document.getElementById('company-address-line-1').innerText = localStorage.getItem('companyAddressLine1');
-    document.getElementById('company-address-line-2').innerText = localStorage.getItem('companyAddressLine2');
-    document.getElementById('company-address-line-3').innerText = localStorage.getItem('companyAddressLine3');
-    document.getElementById('invoice-date').innerText = moment().format('DD/MM/YYYY');
-    document.getElementById('client-name').innerText = localStorage.getItem('clientName');
-    document.getElementById('client-title').innerText = localStorage.getItem('clientTitle');
-    document.getElementById('gst-number').innerText = localStorage.getItem('gstNumber');
-    document.getElementById('client-company-name').innerText = localStorage.getItem('clientCompanyName');
-    document.getElementById('invoice-number').innerText = Math.floor(moment().diff(moment([2016,5,1]), 'months', true));
-    document.getElementById('client-id').innerText = localStorage.getItem('clientId');
-    document.getElementById('client-address-line-1').innerText = localStorage.getItem('clientAddressLine1');
-    document.getElementById('client-address-line-2').innerText = localStorage.getItem('clientAddressLine2');
-    document.getElementById('account-name').innerText = localStorage.getItem('accountName');
-    document.getElementById('account-number').innerText = localStorage.getItem('accountNumber');
-    var total = 0;
-    var rate = parseInt(localStorage.getItem('rate'));
-    var qty = 7;;
-    var date = moment().subtract(1, 'month').startOf('month');
-    document.getElementById('start-date').innerText = date.format('DD/MM/YYYY');
-    var tbody = document.createElement('tbody');
-    while ( date.isBefore(moment().startOf('month')) ) {
-     if ( date.day() < 6 && date.day() > 0 ) {
-        var tr = document.createElement('tr');
-        var subtotal = qty * rate;
-        tr.innerHTML =
-          '<td>' + date.format('DD/MM/YYYY') + '</td>' +
-          '<td>Software development services</td>' +
-          '<td>' + qty + '</td>' +
-          '<td>' + numberToCurrency(rate) + '</td>' +
-          '<td>' + numberToCurrency(subtotal) + '</td>';
-        ;
-        total += subtotal;
-        tbody.appendChild(tr);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        data = JSON.parse(this.responseText);
+        document.getElementById('company-name').innerText = data['companyName'];
+        document.getElementById('company-address-line-1').innerText = data['companyAddressLine1'];
+        document.getElementById('company-address-line-2').innerText = data['companyAddressLine2'];
+        document.getElementById('company-address-line-3').innerText = data['companyAddressLine3'];
+        document.getElementById('invoice-date').innerText = moment().format('DD/MM/YYYY');
+        document.getElementById('client-name').innerText = data['clientName'];
+        document.getElementById('client-title').innerText = data['clientTitle'];
+        document.getElementById('gst-number').innerText = data['gstNumber'];
+        document.getElementById('client-company-name').innerText = data['clientCompanyName'];
+        document.getElementById('invoice-number').innerText = Math.floor(moment().diff(moment([2016,5,1]), 'months', true));
+        document.getElementById('client-id').innerText = data['clientId'];
+        document.getElementById('client-address-line-1').innerText = data['clientAddressLine1'];
+        document.getElementById('client-address-line-2').innerText = data['clientAddressLine2'];
+        document.getElementById('account-name').innerText = data['accountName'];
+        document.getElementById('account-number').innerText = data['accountNumber'];
+        var total = 0;
+        var rate = parseInt(data['rate']);
+        var qty = 7;;
+        var date = moment().subtract(1, 'month').startOf('month');
+        document.getElementById('start-date').innerText = date.format('DD/MM/YYYY');
+        var tbody = document.createElement('tbody');
+        while ( date.isBefore(moment().startOf('month')) ) {
+         if ( date.day() < 6 && date.day() > 0 ) {
+            var tr = document.createElement('tr');
+            var subtotal = qty * rate;
+            tr.innerHTML =
+              '<td>' + date.format('DD/MM/YYYY') + '</td>' +
+              '<td>Software development services</td>' +
+              '<td>' + qty + '</td>' +
+              '<td>' + numberToCurrency(rate) + '</td>' +
+              '<td>' + numberToCurrency(subtotal) + '</td>';
+            ;
+            total += subtotal;
+            tbody.appendChild(tr);
+          }
+          date.add(1, 'day');
+        }
+        document.getElementById('end-date').innerText = date.subtract(1, 'day').format('DD/MM/YYYY');
+        var totalRow = document.createElement('tr');
+        totalRow.innerHTML = '<td></td><td></td><td></td><th>Total</th><th>NZ$' + numberToCurrency(total) + '</th>';
+        tbody.appendChild(totalRow);
+        document.querySelector('.line-items').appendChild(tbody);
       }
-      date.add(1, 'day');
-    }
-    document.getElementById('end-date').innerText = date.subtract(1, 'day').format('DD/MM/YYYY');
-    var totalRow = document.createElement('tr');
-    totalRow.innerHTML = '<td></td><td></td><td></td><th>Total</th><th>NZ$' + numberToCurrency(total) + '</th>';
-    tbody.appendChild(totalRow);
-    document.querySelector('.line-items').appendChild(tbody);
+    };
+    xhttp.open("GET", ".invoice_data.json", true);
+    xhttp.send();
   </script>
 </body>
 </html>
