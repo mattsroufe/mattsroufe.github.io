@@ -93,7 +93,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Analyst – Monitoring, Compliance &amp; Review</strong>
           <span>March 2011 - May 2013</span>
@@ -123,7 +123,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Analyst – Monitoring &amp; Compliance</strong>
           <span>Jan 2010 – Mar 2011</span>
@@ -156,7 +156,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Residential Energy Analyst</strong>
           <span>Apr 2008 – Oct 2009</span>
@@ -188,7 +188,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Contract Lawyer</strong>
           <span>Sep 2007 – Apr 2008</span>
@@ -204,7 +204,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Associate Lawyer</strong>
           <span>Sep 2006 – Sep 2007</span>
@@ -228,7 +228,7 @@
         </ul>
       </div>
 
-      <div class="employer collapsed">
+      <div class="employer">
         <p>
           <strong>Contract Auditor</strong>
           <span>Jan 2006 – July 2006</span>
@@ -274,12 +274,22 @@
 
   <script>
     (function () {
-      var employer_sections = document.querySelectorAll('.employer');
+      var employers = document.querySelectorAll('.employer'),
+          styleEl = document.createElement('style'),
+          styleSheet, employer, i;
 
-      for (var i = 0; i < employer_sections.length; i++) {
-        employer_sections[i].addEventListener('click', function () {
+      document.head.appendChild(styleEl);
+      styleSheet = styleEl.sheet;
+
+      for (i = 0; i < employers.length; i++) {
+        employer = employers[i];
+        styleSheet.insertRule('.employer:nth-of-type(' + (i + 1) + ') ul { height: ' + employer.querySelector('ul').clientHeight + 'px }', 0);
+        employer.addEventListener('click', function () {
           this.classList.toggle('collapsed');
         });
+        if ( i > 1 ) {
+          employer.classList.add('collapsed');
+        }
       }
     })();
   </script>

@@ -29,7 +29,7 @@ header {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
   box-sizing: border-box;
 }
 ul {
@@ -43,14 +43,21 @@ a {
   display: inline-block;
   float: right;
 }
+.employer-name:after, .employer-location:after {
+  transition: transform 0.3s ease-in-out;
+}
 .employer:not(.collapsed) .employer-name:after,
 .employer:not(.collapsed) .employer-location:after {
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+.employer ul {
+  transition: height 0.3s ease-in-out;
+  overflow: hidden;
+}
 .employer.collapsed ul {
-  display: none;
+  height: 0 !important;
 }
 .container {
   max-width: 860px;
@@ -77,9 +84,6 @@ section:not(:last-child), header {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 2.5rem;
 }
-.employer, .school {
-  margin-top: 2rem;
-}
 .employer p, .school {
   position: relative;
 }
@@ -96,6 +100,15 @@ section:not(:last-child), header {
     border-right: 4px solid transparent;
     border-bottom: 5px solid black;
   }
+  header {
+    font-size: 90%
+  }
+  ul {
+    padding-left: 20px
+  }
+  .container {
+    padding: 0 8px;
+  }
 }
 @media screen and (min-width: 550px) {
   .employer-name:after {
@@ -106,7 +119,6 @@ section:not(:last-child), header {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 5px solid black;
-
   }
 }
 @media (min-width: 550px), print {
