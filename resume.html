@@ -283,7 +283,7 @@
 
       for (i = 0; i < employers.length; i++) {
         employer = employers[i];
-        styleSheet.insertRule('.employer:nth-of-type(' + (i + 1) + ') ul { height: ' + employer.querySelector('ul').clientHeight + 'px }', 0);
+        styleSheet.insertRule('.employer:nth-of-type(' + (i + 1) + ') ul { height: ' + employer.querySelector('ul').offsetHeight + 'px }', 0);
         employer.addEventListener('click', function () {
           this.classList.toggle('collapsed');
         });
