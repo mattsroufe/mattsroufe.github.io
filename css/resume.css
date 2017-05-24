@@ -110,7 +110,7 @@ section:not(:last-child), header {
     padding: 0 8px;
   }
 }
-@media screen and (min-width: 550px) {
+/* @media screen and (min-width: 550px) {
   .employer-name:after {
     margin-left: 10px;
     margin-bottom: 2px;
@@ -121,6 +121,7 @@ section:not(:last-child), header {
     border-bottom: 5px solid black;
   }
 }
+*/
 @media (min-width: 550px), print {
   .container {
     margin-top: 60px;
