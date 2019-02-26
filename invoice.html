@@ -142,7 +142,7 @@
     </tr>
     <tr>
       <td id='account-number'></td>
-      <td class="right">Subject provided is a zero-rated supply</td>
+      <td class="right"><!-- Subject provided is a zero-rated supply --></td>
     </tr>
   </div>
   <script>
@@ -171,7 +171,7 @@
         document.getElementById('account-number').innerText = data['accountNumber'];
         var total = 0;
         var rate = parseInt(data['rate']);
-        var qty = 7;;
+        var qty = 8;;
         var date = moment().subtract(1, 'month').startOf('month');
         document.getElementById('start-date').innerText = date.format('DD/MM/YYYY');
         var tbody = document.createElement('tbody');
