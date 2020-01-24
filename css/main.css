@@ -2,26 +2,19 @@ html {
   font-size: 15px;
 }
 
-html, body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 body {
   font-family: "Montserrat", Arial, sans-serif;
-  background: #fff;
+  background: #f5e7d2;
   font-weight: 500;
   color: #999999;
-  margin: 10vh 0;
 }
 
 main {
+  height: 80vh; /* using this to deal with ios safari viewport */
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  flex: 1;
 }
 
 h1 {
@@ -42,6 +35,7 @@ li {
 
 .avatar {
   display: block;
+  margin-top: 10vh;
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
