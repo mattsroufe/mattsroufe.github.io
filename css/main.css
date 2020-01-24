@@ -29,11 +29,17 @@ h1 {
 }
 
 ul {
+  display: flex;
   justify-content: center;
   list-style: none;
+  padding-left: 0;
 }
 
-img {
+li {
+  margin: 0 0.8em;
+}
+
+.avatar {
   display: block;
   margin-left: auto;
   margin-right: auto;
