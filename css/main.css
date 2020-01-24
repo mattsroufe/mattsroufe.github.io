@@ -13,6 +13,7 @@ body {
   background: #fff;
   font-weight: 500;
   color: #999999;
+  margin: 10vh 0;
 }
 
 main {
@@ -44,13 +45,4 @@ li {
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
-}
-
-@media (min-width: 550px) {
-  body {
-    display: flex;
-  }
-  aside {
-    display: block;
-  }
 }
