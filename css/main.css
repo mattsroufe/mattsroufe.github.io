@@ -1,35 +1,29 @@
+html {
+  font-size: 15px;
+}
+
 html, body {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   font-family: "Montserrat", Arial, sans-serif;
   background: #fff;
-  font-size: 15px;
-  line-height: 1.8;
   font-weight: 500;
   color: #999999;
-  margin: 0;
-}
-
-aside {
-  background: rgba(0, 0, 0, 0.04);
-  padding: 48px 24px;
-}
-
-aside > ul {
-  margin: 0;
-  padding: 0;
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   flex: 1;
-  padding-top: 96px;
 }
 
 h1 {
-  text-align: center;
   padding-top: 24px;
   color: rgba(0, 0, 0, 0.8);
 }
@@ -40,11 +34,17 @@ ul {
 }
 
 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 50%;
 }
 
 @media (min-width: 550px) {
   body {
     display: flex;
+  }
+  aside {
+    display: block;
   }
 }
