@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #fffaf1;
   font-weight: 500;
   color: #999999;
@@ -19,6 +19,7 @@ main {
 
 h1 {
   padding-top: 24px;
+  font-weight: 600;
   color: rgba(0, 0, 0, 0.8);
 }
 

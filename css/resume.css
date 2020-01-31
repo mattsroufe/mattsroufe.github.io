@@ -16,6 +16,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-weight: 300;
 }
+h1 {
+  font-weight: 500;
+}
 h2 {
   font-weight: 400;
   font-size: 1.2rem;
@@ -154,10 +157,11 @@ section:not(:last-child), header {
 @media print {
   body {
     background: #fff;
+    font-size: 1rem;
   }
   .container {
     width: 100%;
-    padding: 0;
+    padding: 32px 16px;
     margin: 0;
     box-shadow: none;
   }
