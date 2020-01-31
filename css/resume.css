@@ -1,9 +1,9 @@
 html {
-  font-size: 62.5%;
+  font-size: 14px;
 }
 body {
   margin: 8px;
-  font-size: 1.5em;
+  font-size: 1.1rem;
   line-height: 1.6;
   font-weight: 300;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h2 {
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   letter-spacing: 0;
 }
@@ -153,12 +153,13 @@ section:not(:last-child), header {
 }
 @media print {
   body {
-    font-size: 12px;
+    background: #fff;
   }
   .container {
     width: 100%;
     padding: 0;
     margin: 0;
+    box-shadow: none;
   }
   .employer.collapsed ul {
     display: block;
