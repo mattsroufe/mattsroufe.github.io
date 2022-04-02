@@ -4,20 +4,161 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#1a5d8d">
 
     <title>Service worker demo</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      html, body {
+			  width: 100%;
+			  height: 100%;
+			  margin: 0;
+			  padding: 0;
+			  font-family: 'Helvetica', 'Arial', sans-serif;
+			}
+
+			.container {
+			  width: 100%;
+			  height: 100%;
+			  max-width: 400px;
+			  max-height: 600px;
+			  overflow: hidden;
+			  position: relative;
+			}
+
+			.view {
+			  will-change: transform;
+			  width: 100%;
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  transition: -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+			  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+			}
+
+			.list-view {
+			  height: 100%;
+			  width: 100%;
+			  position: relative;
+			  overflow: scroll;
+			  -webkit-overflow-scrolling: touch;
+			}
+
+			.details-view {
+			  -webkit-transform: translateX(100%);
+			  transform: translateX(100%);
+
+			  box-sizing: border-box;
+			  padding: 30px;
+			}
+
+			.view-change .list-view {
+			  -webkit-transform: translateX(-100%);
+			  transform: translateX(-100%);
+			}
+
+			.view-change .details-view {
+			  -webkit-transform: translateX(0);
+			  transform: translateX(0);
+			}
+
+			.list {
+			  list-style: none;
+			  padding: 0;
+			  margin: 0;
+			}
+
+			.list li {
+			  box-sizing: border-box;
+			  line-height: 50px;
+			  padding: 0 30px;
+			  border-bottom: 1px solid #CCC;
+			  background: linear-gradient(to bottom, #FFF, #FAFAFA);
+			}
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  /* let the browser know we plan to animate
+     each view in and out */
+  will-change: transform;
+}
+
+.view {
+  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+
+.details-view {
+  transform: translateX(100%);
+}
+
+.view-change .list-view {
+  transform: translateX(-100%);
+}
+
+.view-change .details-view {
+  transform: translateX(0);
+}
+
+    </style>
   </head>
 
   <body>
-    <h1>Lego Star Wars gallery</h1>
+    <div class="container">
+      <div class="view list-view">
+        <ul class="list">
+        </ul>
+      </div>
+      <div class="view details-view">
+        <h1>Details view for <span class="item-name">Item 18</span></h1>
+        <button class="back-button">Back</button>
+      </div>
+    </div>
 
-    <section></section>
+    <script>
+      async function getGolfers() {
+        const res = await fetch("golfers.json")
+        return await res.json()
+      }
+      (async function onLoad() {
+        const golfers = await getGolfers()
+        list = document.querySelector('.list')
+        golfers.forEach(golfer => {
+          const li = document.createElement('li')
+          li.classList.add('list-item')
+          li.append(`${golfer.first_name} ${golfer.surname}`)
+          li.addEventListener('click', onViewChange, false);
+          list.append(li)
+        });
+        console.log(JSON.stringify(golfers, null, 2))
+      })()
+      var container = document.querySelector('.container');
+var backButton = document.querySelector('.back-button');
+var listItems = document.querySelectorAll('.list-item');
 
+/**
+ * Toggles the class on the container so that
+ * we choose the correct view.
+ */
+function onViewChange(evt) {
+  container.classList.toggle('view-change');
+}
+
+// And switch it back again when you click the back button
+backButton.addEventListener('click', onViewChange);
+
+    </script>
     <script type="module" src="app.js"></script>
   </body>
 </html>

@@ -52,5 +52,5 @@ const createGalleryFigure = async (galleryImage) => {
   }
 };
 
-registerServiceWorker();
-Gallery.images.map(createGalleryFigure);
+// registerServiceWorker();
+// Gallery.images.map(createGalleryFigure);
