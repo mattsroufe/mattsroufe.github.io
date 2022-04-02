@@ -72,10 +72,14 @@
 			.list li {
 			  box-sizing: border-box;
 			  line-height: 50px;
-			  padding: 0 30px;
+    display: flex;
+			  padding: 16px;
 			  border-bottom: 1px solid #CCC;
 			  background: linear-gradient(to bottom, #FFF, #FAFAFA);
 			}
+      .list-item img {
+        margin-right: 16px;
+      }
 .container {
   width: 100%;
   height: 100%;
@@ -136,8 +140,13 @@
         list = document.querySelector('.list')
         golfers.forEach(golfer => {
           const li = document.createElement('li')
+          const img = document.createElement('img')
+          img.src = `./gallery/${golfer.username}.png`
+          img.height = 50
+          img.width = 50
           li.classList.add('list-item')
-          li.append(`${golfer.first_name} ${golfer.surname}`)
+          li.append(img)
+          li.append(`${golfer.first_name} ${golfer.surname}`) 
           li.addEventListener('click', onViewChange, false);
           list.append(li)
         });
@@ -152,7 +161,7 @@ var listItems = document.querySelectorAll('.list-item');
  * we choose the correct view.
  */
 function onViewChange(evt) {
-  container.classList.toggle('view-change');
+  window.requestAnimationFrame(container.classList.toggle('view-change'));
 }
 
 // And switch it back again when you click the back button
